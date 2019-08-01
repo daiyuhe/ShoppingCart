@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+<div id="app" class="container">
+    <table class="table table-dark table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>产品编号</th>
+            <th>产品名字</th>
+            <th style="text-align:left;">购买数量</th>
+            <th>产品单价</th>
+            <th>产品总价</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(good, index) in goods" v-bind:key="good.id">
+            <td>{{ good.id }}</td>
+            <td>{{ good.name }}</td>
+            <td>
+                <button type="button" class="btn btn-primary" v-on:click="reduce(good, index)">-</button>
+                <input type="text" style="text-align:center;" v-model="good.quantity">
+                <button type="button" class="btn btn-primary" v-on:click="add(good)">+</button>
+            </td>
+            <td>{{ good.price }}</td>
+            <td>{{ good.price * good.quantity }}</td>
+            <td>
+                <button type="button" class="btn btn-danger" v-on:click="deleteOne(index)">移除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>总计</td>
+            <td></td>
+            <td>{{totalQuantity()}}</td>
+            <td></td>
+            <td>{{totalPrice()}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" v-on:click="deleteAll">清空购物车</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="js/jquery-3.3.1.slim.min.js"></script>-->
+<!--<script src="js/popper.min.js"></script>-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script src="js/vue.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
