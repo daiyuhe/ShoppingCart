@@ -44,7 +44,11 @@ var vm = new Vue({
         },
         deleteAll: function () {
             this.goods = [];
-        },
+        }
+
+    },
+    computed: {
+
         totalPrice: function () {
             var total = 0;
             this.goods.forEach(good =>
